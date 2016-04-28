@@ -63,6 +63,14 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {    
         root = remove(x, root);
     }
 
+    public void printTree() {
+        if (isEmpty()) {
+            System.out.println("Empty Tree");
+        } else {
+            printTree(root);
+        }
+    }
+
     //t节点下是否有x:这里存在递归调用
     private boolean contains(AnyType x, BinaryNode<AnyType> t) {
         if (t == null) {
@@ -136,5 +144,14 @@ public class BinarySearchTree<AnyType extends Comparable<? super AnyType>> {    
             t = (t.left != null) ? t.left : t.right;    //一个孩子
         }
         return t;
+    }
+
+    //按顺序打印二叉树
+    private void printTree(BinaryNode<AnyType> t) {
+        if (t != null) {
+            printTree(t.left);
+            System.out.println(t.element);
+            printTree(t.right);
+        }
     }
 }
